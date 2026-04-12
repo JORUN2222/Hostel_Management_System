@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .inventory-top{
+            /* background-color: aliceblue; */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            width: 100%;
+        }
+        .inventory-body{
+            /* background-color: aliceblue; */
+            display: flex;
+            gap: 1rem;
+            
+        }
+        table, th, td{
+            border-collapse: collapse;
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+        }
+        .inventory-container{
+            background-color: red;
+            padding: 10px;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+    <div class="inventory-container">
+        <div class="inventory-top">
+            <div>
+                <h2>Title</h1>
+            </div>
+            <div>
+                <button>
+                    Add
+                </button>
+            </div>
+        </div>
+        <div class="inventory-body">
+            <div class="table1">
+                <h2>Consumables</h2>
+                <table>
+                    <tr>
+                        <th>itemId</th>
+                        <th>itemName</th>
+                        <th>brand</th>
+                        <th>quantity</th>
+                        <th>action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Tissue</td>
+                        <td>yC</td>
+                        <td>100</td>
+                        <td>
+                            <button class="editBtn">Edit</button>
+                            <button class="deleteBtn">Delete</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="table2">
+            <h2>Misselenious</h2>
+            <table>
+                <tr>
+                    <th>toolId</th>
+                    <th>toolName</th>
+                    <th>brand</th>
+                    <th>quantity</th>
+                    <th>action</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Bedsheet</td>
+                    <td>yS</td>
+                    <td>59</td>
+                    <td>
+                        <button class="editBtn" >Edit</button>
+                        <button class="deleteBtn" >Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

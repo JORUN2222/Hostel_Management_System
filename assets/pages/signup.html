@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student SignUp</title>
+    <link rel="stylesheet" href="../css/signup.css">
+    <link rel="shortcut icon" href="../img/basc-logo.png" type="image/x-icon">
+    
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../../landing.html"><img style="width: 50px;" src="../img/cropped-logo-192x192.png" alt=""></a>
+            <p>Bulacan State Agricultural University </p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="..">Home</a></li>
+                <li><a href="..">About</a></li>
+                <li><a href="..">Contact us</a></li>
+                <li><a href="..">Discover</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <form action=".." method="post">
+                <img src="../img/cropped-logo-192x192.png" alt="">
+                 <h3>Hostel Management System</h3>
+                 <div class="container">
+                     <div class="input-container">
+                        <label for="studentID">StudentID No.</label>
+                        <input type="number" name="studentID" id="studentID" placeholder="Enter your Student ID Number">
+                        <label for="firstname">Firstname</label>
+                        <input type="text" name="firstname" id="firstname" placeholder="Enter your Firstname">
+                        <label for="lastname">Lastname</label>
+                        <input type="text" name="lastname" id="lastname" placeholder="Enter your Lastname">
+                     </div>
+                    <div class="input-container">                    
+                            <label for="mail">Email</label>
+                            <input type="email" name="mail" id="mail" placeholder="Enter your Email">
+                            <label for="passwords">Password</label>
+                            <input type="password" name="passwords" id="passwords" placeholder="Enter your Password">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" name="confirm-password" id="confirm-password" placeholder="confirm-password">
+                        <div class="showpassword_box">
+                            <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()">
+                            <label for="showPassword">Show password</label>
+                        </div>                    
+                        <input type="submit" value="SignUp">
+                        <small style="display: flex; justify-content: center;">Already have an account?<a style="margin-inline: 5px;" href="login.html">Login</a>here!</small>
+                    </div>
+                 </div>
+               
+            </form>
+        </article>
+    </main>
+</body>
+<script src="../js/showpass.js"></script>
+</html>

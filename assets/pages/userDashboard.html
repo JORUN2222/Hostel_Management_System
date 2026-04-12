@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Dashboard</title>
+<link rel="shortcut icon" href="../img/basc-logo.png" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Istok+Web:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --maroon:        rgb(70,0,0);
+  --maroon-light:  rgba(70,0,0,0.07);
+  --maroon-border: rgba(70,0,0,0.18);
+  --bg:            #f5f4f0;
+  --surface:       #ffffff;
+  --border:        rgba(0,0,0,0.07);
+  --ink:           #1a1a18;
+  --ink-2:         #5a5a56;
+  --ink-3:         #9a9a96;
+  --green:         #2d6a4f;
+  --green-bg:      #e8f5ee;
+  --amber:         #b45309;
+  --amber-bg:      #fef3e2;
+  --blue:          #1d4ed8;
+  --blue-bg:       #dbeafe;
+  --red:           #b91c1c;
+  --red-bg:        #fee2e2;
+  --mid-w:         220px;
+  --topbar-h:      62px;
+  --f-head:        'Inter', sans-serif;
+  --f-body:        'Istok Web', sans-serif;
+}
+
+body{
+  font-family:var(--f-body);
+  background:var(--bg);
+  color:var(--ink);
+  display:flex;
+  height:100vh;
+  overflow:hidden;
+}
+
+h1,h2,h3,h4,h5,h6,
+.brand-name,.stat-val,.panel-title,.stat-label{
+  font-family:var(--f-head);
+}
+
+/* hide original aside */
+aside{display:none;}
+
+/* ═══════════════════════════════════════
+   MIDDLE PANEL
+═══════════════════════════════════════ */
+section{
+  width:var(--mid-w);
+  background:var(--surface);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  flex-shrink:0;height:100vh;overflow-y:auto;
+}
+
+.insti-logo{
+  display:flex;align-items:center;gap:10px;
+  padding:18px 16px 16px;
+  border-bottom:1px solid var(--border);
+}
+.insti-logo img{width:38px;height:38px;object-fit:contain;}
+.brand-name{font-size:14px;font-weight:700;color:var(--ink);line-height:1.35;}
+
+.welcome{padding:18px 14px 10px;border-bottom:1px solid var(--border);}
+.welcome-content h1{
+  font-family:var(--f-head);font-size:18px;font-weight:700;color:var(--ink);line-height:1.2;
+}
+.welcome-content h2{
+  font-family:var(--f-head);font-size:13px;font-weight:500;color:var(--ink-3);margin-bottom:14px;
+}
+
+.action{
+  font-family:var(--f-head);
+  font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink-3);padding:10px 0 5px;
+}
+.action h3{font:inherit;color:inherit;}
+
+.action-buttons{display:flex;flex-direction:column;gap:2px;}
+
+.action-btn{
+  font-family:var(--f-body);
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;font-size:15px;font-weight:400;
+  color:var(--ink-2);background:none;border:none;cursor:pointer;
+  border-radius:8px;transition:background 0.15s,color 0.15s;text-align:left;
+  margin:1px 4px;
+}
+.action-btn h3{font-family:var(--f-body);font-size:15px;font-weight:400;color:inherit;}
+.action-btn:hover{background:var(--maroon-light);color:var(--maroon);}
+.action-btn.active{background:var(--maroon-light);color:var(--maroon);font-weight:700;}
+.action-btn.active h3{font-weight:700;}
+
+/* icon masks */
+.svg-icons,.svg-icons2,.svg-icons3,.svg-icons4,.svg-icons5{
+  width:16px;height:16px;flex-shrink:0;display:inline-block;
+  background-color:currentColor;
+  mask-repeat:no-repeat;mask-size:contain;mask-position:center;
+  -webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;
+}
+.svg-icons  { -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Crect x='3' y='3' width='7' height='7'/%3E%3Crect x='14' y='3' width='7' height='7'/%3E%3Crect x='14' y='14' width='7' height='7'/%3E%3Crect x='3' y='14' width='7' height='7'/%3E%3C/svg%3E"); mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Crect x='3' y='3' width='7' height='7'/%3E%3Crect x='14' y='3' width='7' height='7'/%3E%3Crect x='14' y='14' width='7' height='7'/%3E%3Crect x='3' y='14' width='7' height='7'/%3E%3C/svg%3E"); }
+.svg-icons2 { -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E"); mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E"); }
+.svg-icons3 { -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E"); mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E"); }
+.svg-icons4 { -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z'/%3E%3Cpath d='M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z'/%3E%3C/svg%3E"); mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z'/%3E%3Cpath d='M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z'/%3E%3C/svg%3E"); }
+.svg-icons5 { -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E"); mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E"); }
+
+/* NOTIFICATIONS */
+.notif-panel{
+  padding:16px 14px;
+  flex:1;display:flex;flex-direction:column;gap:10px;
+  border-top:1px solid var(--border);
+  margin-top:auto;
+}
+.notif-panel > h3{
+  font-family:var(--f-head);font-size:11px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-3);
+  margin-bottom:4px;
+}
+.notification-panel-content{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:10px;padding:10px 12px;
+}
+.notification-panel-content .top{
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;
+}
+.notification-panel-content .top span{font-family:var(--f-body);font-size:11px;color:var(--ink-3);}
+.setbtn{background:none;border:none;cursor:pointer;font-size:16px;color:var(--ink-3);line-height:1;}
+.notification-panel-content h5{font-family:var(--f-head);font-size:12px;font-weight:600;color:var(--ink);margin-bottom:2px;}
+.notification-panel-content p{font-family:var(--f-body);font-size:12px;color:var(--ink-2);}
+
+/* ═══════════════════════════════════════
+   RIGHT PANEL
+═══════════════════════════════════════ */
+article{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0;}
+
+.top-header{
+  height:var(--topbar-h);
+  background:var(--surface);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;flex-shrink:0;
+}
+.top-header .left{display:flex;align-items:center;gap:14px;}
+.menu-icon{
+  width:36px;height:36px;border-radius:8px;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;cursor:pointer;color:var(--ink-2);transition:background 0.15s;
+}
+.menu-icon:hover{background:var(--bg);}
+.top-header h2{font-family:var(--f-head);font-size:17px;font-weight:700;color:var(--ink);}
+
+.top-header .right{display:flex;align-items:center;gap:10px;}
+.icon-btn{
+  width:36px;height:36px;border-radius:8px;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;cursor:pointer;transition:background 0.15s;
+}
+.icon-btn:hover{background:var(--bg);}
+
+/* STAT CARDS */
+.cards{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  padding:20px 26px 0;flex-shrink:0;
+}
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:20px 22px 16px;
+}
+.card h2{
+  font-family:var(--f-head);font-size:12px;font-weight:600;
+  color:var(--ink-3);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;
+}
+.card h3{
+  font-family:var(--f-head);font-size:36px;font-weight:700;
+  color:var(--ink);line-height:1;margin-bottom:14px;
+}
+.progress{height:4px;border-radius:2px;background:var(--bg);overflow:hidden;position:relative;}
+.progress::after{
+  content:'';position:absolute;left:0;top:0;height:100%;
+  border-radius:2px;transition:width 1s ease;
+}
+.progress.green::after{background:var(--green);width:50%;}
+.progress.red::after{background:var(--red);width:15%;}
+.progress.blue::after{background:var(--blue);width:100%;}
+
+/* ARTICLE BODY */
+.article-body{
+  flex:1;overflow-y:auto;
+  padding:20px 26px 26px;
+  display:flex;flex-direction:column;gap:16px;
+}
+.article-body::-webkit-scrollbar{width:4px;}
+.article-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.1);border-radius:2px;}
+
+/* ── SHARED PANEL ── */
+.panel{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;overflow:hidden;
+}
+.panel-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:15px 20px;border-bottom:1px solid var(--border);
+}
+.panel-title{font-family:var(--f-head);font-size:15px;font-weight:700;color:var(--ink);}
+
+/* ── BUTTONS ── */
+.btn-modal{
+  font-family:var(--f-body);font-size:13px;font-weight:700;
+  padding:7px 16px;border-radius:7px;border:none;cursor:pointer;
+  transition:opacity 0.15s,transform 0.1s;
+}
+.btn-modal:hover{opacity:0.85;transform:translateY(-1px);}
+.btn-accept{background:var(--maroon);color:#fff;}
+.btn-decline{background:var(--red-bg);color:var(--red);}
+
+/* ── TABLES ── */
+.data-table{width:100%;border-collapse:collapse;}
+.data-table th{
+  font-family:var(--f-head);font-size:11px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;color:var(--ink-3);
+  padding:12px 18px;text-align:left;
+  background:rgba(0,0,0,0.02);border-bottom:1px solid var(--border);
+}
+.data-table td{
+  font-family:var(--f-body);font-size:15px;color:var(--ink-2);
+  padding:13px 18px;border-bottom:1px solid rgba(0,0,0,0.04);
+}
+.data-table tr:last-child td{border-bottom:none;}
+.data-table tr:hover td{background:rgba(0,0,0,0.015);}
+
+/* ═══════════════════════════════════════
+   DASHBOARD
+═══════════════════════════════════════ */
+.dashboard-placeholder{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+}
+.dashboard-bubble1,.dashboard-bubble2,.dashboard-bubble3{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:22px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.dashbubbleleft h3{
+  font-family:var(--f-head);font-size:11px;font-weight:600;
+  color:var(--ink-3);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;
+}
+.percentage h1{
+  font-family:var(--f-head);font-size:36px;font-weight:700;color:var(--maroon);
+}
+
+/* ═══════════════════════════════════════
+   PROFILE
+═══════════════════════════════════════ */
+.profile-container{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:28px;
+  display:flex;gap:32px;
+}
+.profile-left{display:flex;flex-direction:column;align-items:center;gap:14px;flex-shrink:0;}
+.profile-pic{
+  width:110px;height:110px;border-radius:50%;overflow:hidden;
+  border:3px solid var(--maroon-border);
+}
+.profile-pic img{width:100%;height:100%;object-fit:cover;}
+.profileBtn{
+  font-family:var(--f-body);font-size:13px;
+  background:var(--maroon-light);color:var(--maroon);
+  border:1px solid var(--maroon-border);border-radius:8px;
+  padding:8px 16px;cursor:pointer;font-weight:700;transition:background 0.15s;
+}
+.profileBtn:hover{background:var(--maroon);color:#fff;}
+
+.profile-right{flex:1;}
+.profile-right form{display:flex;flex-direction:column;gap:20px;}
+.form-content{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.split{display:flex;flex-direction:column;gap:8px;}
+
+label{
+  font-family:var(--f-head);font-size:11px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;color:var(--ink-3);
+}
+input[type=text],input[type=email],input[type=password],input[type=date]{
+  font-family:var(--f-body);font-size:15px;color:var(--ink);
+  background:var(--bg);border:1px solid var(--border);border-radius:8px;
+  padding:10px 14px;width:100%;outline:none;transition:border-color 0.15s;
+}
+input:focus{border-color:var(--maroon);}
+input[type=submit]{
+  font-family:var(--f-body);font-size:15px;font-weight:700;
+  background:var(--maroon);color:#fff;border:none;
+  border-radius:9px;padding:12px 28px;cursor:pointer;
+  align-self:flex-start;transition:opacity 0.15s;
+}
+input[type=submit]:hover{opacity:0.85;}
+
+/* ═══════════════════════════════════════
+   TRAININGS / LESSONS BUBBLES
+═══════════════════════════════════════ */
+.article-body-content{display:flex;flex-direction:column;gap:14px;}
+
+.bubble{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;overflow:hidden;cursor:pointer;
+  display:flex;align-items:stretch;
+  transition:box-shadow 0.18s,transform 0.15s;
+}
+.bubble:hover{box-shadow:0 4px 20px rgba(70,0,0,0.1);transform:translateY(-2px);}
+
+.bubble-left{
+  padding:20px 22px;flex:1;
+  display:flex;flex-direction:column;justify-content:center;gap:8px;
+}
+.bubble-title h2{
+  font-family:var(--f-head);font-size:17px;font-weight:700;color:var(--ink);
+}
+.bubble-text p{
+  font-family:var(--f-body);font-size:15px;color:var(--ink-2);line-height:1.5;
+}
+.bubble-picture{
+  width:180px;flex-shrink:0;overflow:hidden;
+}
+.bubble-picture img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* ═══════════════════════════════════════
+   HISTORY
+═══════════════════════════════════════ */
+.history-panel{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;overflow:hidden;
+}
+.history-panel h3{
+  font-family:var(--f-head);font-size:15px;font-weight:700;color:var(--ink);
+  padding:16px 20px;border-bottom:1px solid var(--border);
+}
+.history-item{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 20px;border-bottom:1px solid rgba(0,0,0,0.04);
+}
+.history-item:last-child{border-bottom:none;}
+.history-icon{
+  width:36px;height:36px;border-radius:8px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+}
+.hi-green{background:var(--green-bg);}
+.hi-amber{background:var(--amber-bg);}
+.hi-red{background:var(--red-bg);}
+.history-info{flex:1;}
+.history-info .h-title{font-family:var(--f-head);font-size:14px;font-weight:600;color:var(--ink);margin-bottom:2px;}
+.history-info .h-sub{font-family:var(--f-body);font-size:13px;color:var(--ink-3);}
+.history-score{font-family:var(--f-head);font-size:14px;font-weight:700;}
+.score-pass{color:var(--green);}
+.score-fail{color:var(--red);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+
+<body>
+<main style="display:flex;width:100%;height:100vh;overflow:hidden;">
+
+  <!-- MIDDLE PANEL -->
+  <section>
+    <div class="insti-logo">
+      <img src="../img/IM-logo.png" alt="">
+      <div class="brand-name">Hostel<br>Management</div>
+    </div>
+
+    <div class="welcome">
+      <div class="welcome-content">
+        <h1>Welcome</h1>
+        <h2>to your course</h2>
+      </div>
+      <div class="action"><h3>Action</h3></div>
+      <div class="action-buttons">
+        <button class="action-btn active" data-page="dashboard"><i class="svg-icons"></i><h3>Dashboard</h3></button>
+        <button class="action-btn" data-page="profile"><i class="svg-icons2"></i><h3>Profile</h3></button>
+        <button class="action-btn" data-page="training"><i class="svg-icons3"></i><h3>Trainings</h3></button>
+        <button class="action-btn" data-page="lessons"><i class="svg-icons4"></i><h3>Lessons</h3></button>
+        <button class="action-btn" data-page="history"><i class="svg-icons5"></i><h3>Learning History</h3></button>
+      </div>
+    </div>
+
+    <!-- NOTIFICATIONS -->
+    <div class="notif-panel">
+      <h3>Notifications</h3>
+      <div class="notification-panel-content">
+        <div class="top">
+          <span>05:48 AM</span>
+          <button class="setbtn">···</button>
+        </div>
+        <h5>Basic Training not Finished</h5>
+        <p>Your last training is not yet finished</p>
+      </div>
+      <div class="notification-panel-content">
+        <div class="top">
+          <span>10:28 AM</span>
+          <button class="setbtn">···</button>
+        </div>
+        <h5>Congrats on your first step!</h5>
+        <p>We congratulate you on taking your first step</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT PANEL -->
+  <article>
+    <div class="top-header">
+      <div class="left">
+        <div class="menu-icon">☰</div>
+        <h2 id="page-title">Dashboard</h2>
+      </div>
+      <div class="right">
+        <div class="icon-btn">🔍</div>
+        <div class="icon-btn">⚙️</div>
+      </div>
+    </div>
+
+    <!-- STAT CARDS -->
+    <div class="cards">
+      <div class="card">
+        <h2>Passed Quizzes</h2>
+        <h3>10 ↑</h3>
+        <div class="progress green"></div>
+      </div>
+      <div class="card">
+        <h2>Failed Quizzes</h2>
+        <h3>3 ↑</h3>
+        <div class="progress red"></div>
+      </div>
+      <div class="card">
+        <h2>Total Quizzes</h2>
+        <h3>20 ↓</h3>
+        <div class="progress blue"></div>
+      </div>
+    </div>
+
+    <!-- ARTICLE BODY -->
+    <div class="article-body" id="article-body">
+
+      <!-- Default dashboard content -->
+      <div class="dashboard-placeholder">
+        <div class="dashboard-bubble1">
+          <div class="dashbubbleleft"><h3>Title</h3></div>
+          <div class="percentage"><h1>100%</h1></div>
+        </div>
+        <div class="dashboard-bubble2">
+          <div class="dashbubbleleft"><h3>Title</h3></div>
+          <div class="percentage"><h1>57%</h1></div>
+        </div>
+        <div class="dashboard-bubble3">
+          <div class="dashbubbleleft"><h3>Title</h3></div>
+          <div class="percentage"><h1>89%</h1></div>
+        </div>
+      </div>
+
+    </div>
+  </article>
+
+</main>
+
+<script>
+const buttons = document.querySelectorAll('.action-btn');
+const body = document.getElementById('article-body');
+const title = document.getElementById('page-title');
+
+function setPage(page, label) {
+  body.style.animation = 'none';
+  body.offsetHeight; // reflow
+  body.style.animation = 'fadeUp 0.3s ease both';
+
+  if (page === 'dashboard') {
+    body.innerHTML = `
+      <div class="dashboard-placeholder">
+        <div class="dashboard-bubble1">
+          <div class="dashbubbleleft"><h3>Title</h3></div>
+          <div class="percentage"><h1>100%</h1></div>
+        </div>
+        <div class="dashboard-bubble2">
+          <div class="dashbubbleleft"><h3>Title</h3></div>
+          <div class="percentage"><h1>57%</h1></div>
+        </div>
+        <div class="dashboard-bubble3">
+          <div class="dashbubbleleft"><h3>Title</h3></div>
+          <div class="percentage"><h1>89%</h1></div>
+        </div>
+      </div>`;
+  }
+  else if (page === 'profile') {
+    body.innerHTML = `
+      <div class="profile-container">
+        <div class="profile-left">
+          <div class="profile-info1">
+            <div class="profile-pic">
+              <img src="../img/cat.png" alt="profile">
+            </div>
+            <div class="profile-img-replace">
+              <button class="profileBtn">Change Profile</button>
+            </div>
+          </div>
+        </div>
+        <div class="profile-right">
+          <form>
+            <div class="form-content">
+              <div class="split">
+                <label>First Name</label>
+                <input type="text" name="firstname" value="User's Name">
+                <label>Last Name</label>
+                <input type="text" name="lastname" value="User's Surname">
+                <label>Email</label>
+                <input type="email" name="email" value="User's Email">
+              </div>
+              <div class="split">
+                <label>Old Password</label>
+                <input type="password" name="oldPassword" placeholder="Enter your password">
+                <label>New Password</label>
+                <input type="password" name="newPassword" placeholder="Enter your new password">
+                <label>Birth Date</label>
+                <input type="date" name="birthdate">
+              </div>
+            </div>
+            <input type="submit" value="Apply Changes">
+          </form>
+        </div>
+      </div>`;
+  }
+  else if (page === 'training') {
+    body.innerHTML = `
+      <div class="article-body-content">
+        <div class="bubble">
+          <div class="bubble-left">
+            <div class="bubble-title"><h2>Training 1</h2></div>
+            <div class="bubble-text"><p>Description of the said training...</p></div>
+          </div>
+          <div class="bubble-picture"><img src="../img/BSAU.jpg" alt="training-image"></div>
+        </div>
+        <div class="bubble">
+          <div class="bubble-left">
+            <div class="bubble-title"><h2>Training 2</h2></div>
+            <div class="bubble-text"><p>Description of the said training...</p></div>
+          </div>
+          <div class="bubble-picture"><img src="../img/BSAU.jpg" alt="training-image"></div>
+        </div>
+      </div>`;
+  }
+  else if (page === 'lessons') {
+    body.innerHTML = `
+      <div class="article-body-content">
+        <div class="bubble">
+          <div class="bubble-left">
+            <div class="bubble-title"><h2>Lesson 1</h2></div>
+            <div class="bubble-text"><p>Description of the said lesson...</p></div>
+          </div>
+          <div class="bubble-picture"><img src="../img/BSAU.jpg" alt="lesson-image"></div>
+        </div>
+        <div class="bubble">
+          <div class="bubble-left">
+            <div class="bubble-title"><h2>Lesson 2</h2></div>
+            <div class="bubble-text"><p>Description of the said lesson...</p></div>
+          </div>
+          <div class="bubble-picture"><img src="../img/BSAU.jpg" alt="lesson-image"></div>
+        </div>
+      </div>`;
+  }
+  else if (page === 'history') {
+    body.innerHTML = `
+      <div class="history-panel">
+        <h3>Learning History</h3>
+        <div class="history-item">
+          <div class="history-icon hi-green">✅</div>
+          <div class="history-info">
+            <div class="h-title">Training 1 — Completed</div>
+            <div class="h-sub">April 10, 2026 · 45 min</div>
+          </div>
+          <span class="history-score score-pass">92%</span>
+        </div>
+        <div class="history-item">
+          <div class="history-icon hi-red">❌</div>
+          <div class="history-info">
+            <div class="h-title">Quiz 3 — Failed</div>
+            <div class="h-sub">April 8, 2026 · 20 min</div>
+          </div>
+          <span class="history-score score-fail">44%</span>
+        </div>
+        <div class="history-item">
+          <div class="history-icon hi-amber">📖</div>
+          <div class="history-info">
+            <div class="h-title">Lesson 2 — In Progress</div>
+            <div class="h-sub">April 7, 2026 · 30 min</div>
+          </div>
+          <span class="history-score" style="color:var(--amber);">57%</span>
+        </div>
+      </div>`;
+  }
+}
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const page = btn.getAttribute('data-page');
+    title.textContent = btn.querySelector('h3').textContent;
+    setPage(page);
+  });
+});
+</script>
+</body>
+</html>

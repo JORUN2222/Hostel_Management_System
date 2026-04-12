@@ -1,0 +1,511 @@
+*{
+    margin: 0;
+}
+* h1, h2, h3, h4, h5{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-style: normal;
+}
+* h1{
+    font-size: 20px;
+}
+* h2{
+    font-size: 16px;
+}
+* h3{
+    font-size: 14px;
+}
+* h4{
+    font-size: 12px;
+}
+* h5{
+    font-size: 10px;
+}
+* p{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 9px;
+}
+main{
+    display: grid;
+    grid-template-columns: 100px 320px 1fr;
+    overflow: hidden;
+    min-height: 100vh;
+    gap: 2px;
+}
+body{
+    background-color: whitesmoke;
+    max-height: 100vh;
+}
+aside{
+    background: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.logo , .aside-buttons{
+    margin: 2rem;
+}
+.aside-buttons{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.dash-icons1 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: currentColor; /* The icon will take the color of the text */
+    /* Path to your downloaded file */
+    -webkit-mask: url('../img/clock-check-svgrepo-com.svg') no-repeat center;
+    mask: url('../img/clock-check-svgrepo-com.svg') no-repeat center;
+    mask-size: contain;
+}
+.dash-icons2 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: currentColor; /* The icon will take the color of the text */
+    /* Path to your downloaded file */
+    -webkit-mask: url('../img/task-svgrepo-com.svg') no-repeat center;
+    mask: url('../img/task-svgrepo-com.svg') no-repeat center;
+    mask-size: contain;
+}
+.dash-icons3 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: currentColor; /* The icon will take the color of the text */
+    /* Path to your downloaded file */
+    -webkit-mask: url('../img/user-lock-svgrepo-com.svg') no-repeat center;
+    mask: url('../img/user-lock-svgrepo-com.svg') no-repeat center;
+    mask-size: contain;
+}
+.dash-icons4 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: currentColor; /* The icon will take the color of the text */
+    /* Path to your downloaded file */
+    -webkit-mask: url('../img/access-key-svgrepo-com.svg') no-repeat center;
+    mask: url('../img/access-key-svgrepo-com.svg') no-repeat center;
+    mask-size: contain;
+}
+.dash-icons5 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: currentColor; /* The icon will take the color of the text */
+    /* Path to your downloaded file */
+    -webkit-mask: url('../img/calendar-lines-pen-svgrepo-com.svg') no-repeat center;
+    mask: url('../img/calendar-lines-pen-svgrepo-com.svg') no-repeat center;
+    mask-size: contain;
+}
+.dash-btn{
+    border-color: transparent;
+    background-color: transparent;
+    padding: 20px;
+}
+.logo img{
+    height: 50px;
+}
+section{
+    background: white;
+    overflow: scroll;
+    max-height: 100vh;
+}
+
+
+article{
+    background: white;
+}
+
+/* 1. The width of the entire scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* 2. The background of the scrollbar track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 10px;
+}
+
+/* 3. The actual draggable handle */
+::-webkit-scrollbar-thumb {
+  background: #ccc; 
+  border-radius: 10px;
+  border: 2px solid #f1f1f1; /* Creates a "gap" look around the handle */
+}
+
+/* 4. Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #999; 
+}
+.insti-logo img{
+    height: 150px;
+}
+.insti-logo{
+    margin-top: 5rem;
+    margin-inline-start: 1rem;
+}
+.welcome-content{
+    display: flex;
+    flex-direction: column;
+    margin-inline: 2rem;
+}
+section .welcome .welcome-content h1{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+section .welcome .welcome-content h2{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+.svg-icons {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: currentColor; /* The icon will take the color of the text */
+    /* Path to your downloaded file */
+    -webkit-mask: url('../img/dashboard-svgrepo-com.svg') no-repeat center;
+    mask: url('../img/dashboard-svgrepo-com.svg') no-repeat center;
+    mask-size: contain;
+}
+.svg-icons2 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: currentColor; /* The icon will take the color of the text */
+    /* Path to your downloaded file */
+    -webkit-mask: url('../img/profile-circle-svgrepo-com.svg') no-repeat center;
+    mask: url('../img/profile-circle-svgrepo-com.svg') no-repeat center;
+    mask-size: contain;
+}
+.svg-icons3 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: currentColor; /* The icon will take the color of the text */
+    /* Path to your downloaded file */
+    -webkit-mask: url('../img/training-achievement-medal-svgrepo-com.svg') no-repeat center;
+    mask: url('../img/training-achievement-medal-svgrepo-com.svg') no-repeat center;
+    mask-size: contain;
+}
+.svg-icons4 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: currentColor; /* The icon will take the color of the text */
+    /* Path to your downloaded file */
+    -webkit-mask: url('../img/cloud-up-svgrepo-com.svg') no-repeat center;
+    mask: url('../img/cloud-up-svgrepo-com.svg') no-repeat center;
+    mask-size: contain;
+}
+.svg-icons5 {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: currentColor; /* The icon will take the color of the text */
+    /* Path to your downloaded file */
+    -webkit-mask: url('../img/bell-alt-1-svgrepo-com.svg') no-repeat center;
+    mask: url('../img/bell-alt-1-svgrepo-com.svg') no-repeat center;
+    mask-size: contain;
+}
+.action-btn{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+    align-items: center;
+    height: 50px;
+    border-color: transparent;
+    background-color: aliceblue;
+}
+.action-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem;
+}
+.action{
+    display: flex;
+    justify-content: left;
+    margin: 2rem;
+}
+.noti{
+    display: flex;
+    justify-content: left;
+    margin: 2rem;
+}
+.notification-panel{
+    margin: 1rem;
+}
+.notification-panel-content{
+    margin: 1rem;
+    padding: 2rem;
+    background-color: aliceblue;
+    border-radius: 1rem;
+}
+.notification-panel-content .top{
+    display: flex;
+    justify-content: space-between;
+}
+.notification-panel-content .top button{
+    border-color: transparent;
+    background-color: transparent;
+}
+main{
+    display:grid;
+    grid-template-columns: 100px 320px 1fr;
+    height:100vh;
+}
+
+section{
+    background:white;
+    overflow-y:auto; /* make scrollable */
+    max-height:100vh;
+}
+
+/* ===== RIGHT PANEL (ARTICLE) ===== */
+article{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.top-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.top-header .left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.menu-icon{
+    width:30px;
+    height:30px;
+    background:#eee;
+    border-radius:6px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+
+.top-header .right{
+    display:flex;
+    gap:10px;
+}
+
+.icon-btn{
+    width:35px;
+    height:35px;
+    border-radius:8px;
+    background:#eee;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+
+/* ===== CARDS ===== */
+.cards{
+    display:flex;
+    gap:20px;
+    flex-wrap: wrap;
+}
+.cards h4{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+.top button{
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
+.top button:hover{
+    scale: 2;
+}
+.card{
+    flex-grow: 1;
+    flex-basis: 100px;
+    background:#fafafa;
+    padding: 15px;
+    border-radius:10px;
+}
+
+.progress{
+    height:4px;
+    border-radius:5px;
+    margin-top:10px;
+}
+
+.green{background:#2ecc71;}
+.red{background:#e74c3c;}
+.blue{background:#3498db;}
+
+/* ===== ACTIVE BUTTON STYLE ===== */
+.action-btn{
+    display:flex;
+    flex-direction:row;
+    gap:2rem;
+    width:100%;
+    align-items:center;
+    height:50px;
+    border:none;
+    background-color:aliceblue;
+    border-right:4px solid transparent;
+    transition:0.2s;
+}
+
+.action-btn.active{
+    border-right:4px solid #3498db;
+    background:#eaf2ff;
+}
+
+/* ===== NOTIFICATION PANEL ===== */
+.notif-panel{
+    margin:1rem;
+}
+
+.notification-panel-content{
+    margin-top:10px;
+    padding:15px;
+    background:aliceblue;
+    border-radius:10px;
+}
+
+.notification-panel-content .top{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+}
+
+/* dynamic content */
+.article-body{
+    background:#f9f9f9;
+    padding:20px;
+    border-radius:10px;
+    min-height:250px;
+    max-height: 67vh;
+    overflow: scroll;
+}
+.bubble{
+    padding: 2rem;
+    display: flex;
+    background-color: burlywood;
+    justify-content: space-between;
+    border-radius: 2rem;
+    align-items: center;
+}
+.bubble-picture img{
+    height: 100px;
+    border-radius: 1rem;
+}
+/* Profile */
+ .profile-container{
+            padding: 20px;
+            display: flex;
+            /* flex-direction: column; */
+            border-radius: 5rem;
+            gap: 2rem;
+        }
+        .profile-left img{
+            border-radius: 2rem;
+            border: solid 3px;
+            height: 300px;
+            width: 300px;
+        }
+        .profile-left{
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 2rem;
+            border: solid black 2px;
+        }
+        .profile-right{
+            background-color: #f9f9f9;
+            border-radius: 2rem;
+            padding: 20px;
+            border: dashed black 2px;
+        }
+        .profile-right form{
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            justify-content: center;
+            align-items: center;
+            box-sizing: content-box;
+        }
+        .profile-right .form-content input[type="text"], input[type="number"], input[type="date"], input[type="email"], input[type="password"]{
+            height: 40px;
+            border-radius: 1rem;
+            border: none;
+            border-bottom: 1px solid;
+            width: 260px;
+            padding: 0px 20px 0px;
+            box-sizing: border-box;
+        }
+        input[type="submit"]{
+            height: 50px;
+            border-radius: 1rem;
+            margin-top: 1rem;
+            border: 5px;
+            padding: 10px;
+            border-style: outset;
+            transition: 0.5s ease-in-out;
+        }
+        input[type="submit"]:hover{
+            border-color: blue;
+            scale: 1.08;
+        }
+        .profile-right .form-content{
+            display: flex;
+            flex-direction: row;
+            /* background-color: red; */
+            /* width: 1000px; */
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .split{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .profile-info1{
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .profileBtn{
+            height: 50px;
+            border-radius: 1rem;
+            /* margin-top: 1rem; */
+            border: 5px;
+            padding: 10px;
+            border-style: outset;
+            transition: 0.5s ease-in-out;
+        }
+        .profileBtn:hover{
+            border-color: blue;
+            scale: 1.08;
+        }
