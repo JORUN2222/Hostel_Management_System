@@ -46,6 +46,18 @@
         <button id="lessons-btn" class="action-btn" data-page="lessons">
           <i class="svg-icons5"></i><h3>Lessons</h3>
         </button>
+        <button id="payments-btn" class="action-btn" data-page="payments">
+          <i class="svg-icons6"></i><h3>Payments</h3>
+        </button>
+        <button id="residents-btn" class="action-btn" data-page="residents">
+          <i class="svg-icons7"></i><h3>Residents</h3>
+        </button>
+        <button id="history-btn" class="action-btn" data-page="history">
+          <i class="svg-icons8"></i><h3>Lessons History</h3>
+        </button>
+        <button id="settings-btn" class="action-btn" data-page="settings">
+          <i class="svg-icons9"></i><h3>Settings</h3>
+        </button>
       </div>
     </div>
 
@@ -80,6 +92,9 @@
       <div class="left">
         <div class="menu-icon">☰</div>
         <h2 id="page-title">Dashboard</h2>
+      </div>
+      <div class="right" style="display:flex;align-items:center;gap:12px;margin-left:auto;">
+        <div class="icon-btn" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(70,0,0,0.1);border-radius:50%;cursor:pointer;"><svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:rgb(70,0,0);stroke-width:2;fill:none;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
       </div>
     </div>
 
@@ -280,8 +295,8 @@
         </div>
 
         <!-- Inventory Modal -->
-        <div class="inv-overlay" id="inv-overlay">
-          <div class="inv-modal">
+        <div class="inv-overlay" id="inv-overlay" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:9999;">
+          <div class="inv-modal" style="position:relative;z-index:10000;">
             <div class="inv-modal-header">
               <h2>Add Inventory Item</h2>
               <button class="close-x" id="close-inv-modal">&times;</button>
@@ -329,8 +344,165 @@
         </div>
       </div>
 
-    </div><!-- /article-body -->
-  </article>
+      <!-- PAYMENTS SECTION -->
+      <div id="payments-content" class="page-section hidden">
+        <div style="padding:20px;background:#fff;border-radius:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+            <h2 style="margin:0;">Payments</h2>
+            <button style="padding:8px 16px;background:rgb(70,0,0);color:white;border:none;border-radius:6px;cursor:pointer;font-weight:600;">+ Record Payment</button>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:24px;">
+            <div style="padding:18px;background:#f5f4f0;border-radius:10px;">
+              <div style="font-size:13px;color:#5a5a56;margin-bottom:8px;">Total Collected</div>
+              <div style="font-size:28px;font-weight:700;color:#1a1a18;">₱48,200</div>
+              <div style="font-size:12px;color:#9a9a96;margin-top:4px;">April 2026</div>
+            </div>
+            <div style="padding:18px;background:#f5f4f0;border-radius:10px;">
+              <div style="font-size:13px;color:#5a5a56;margin-bottom:8px;">Pending</div>
+              <div style="font-size:28px;font-weight:700;color:#1a1a18;">₱2,400</div>
+              <div style="font-size:12px;color:#9a9a96;margin-top:4px;">3 unpaid</div>
+            </div>
+            <div style="padding:18px;background:#f5f4f0;border-radius:10px;">
+              <div style="font-size:13px;color:#5a5a56;margin-bottom:8px;">Overdue</div>
+              <div style="font-size:28px;font-weight:700;color:#1a1a18;">₱800</div>
+              <div style="font-size:12px;color:#9a9a96;margin-top:4px;">2 overdue</div>
+            </div>
+          </div>
+          <h3 style="margin:24px 0 16px 0;font-size:16px;">Payment Records</h3>
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Resident</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Room</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Amount</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Date</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Method</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <td style="padding:12px;color:#1a1a18;">Joren Marquez</td>
+                <td style="padding:12px;color:#1a1a18;">Room #07</td>
+                <td style="padding:12px;color:#1a1a18;">₱200</td>
+                <td style="padding:12px;color:#1a1a18;">Apr 5, 2026</td>
+                <td style="padding:12px;color:#1a1a18;">Cash</td>
+                <td style="padding:12px;"><span style="display:inline-block;padding:3px 10px;background:#e8f5ee;color:#2d6a4f;border-radius:4px;font-size:11px;font-weight:600;">Paid</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <td style="padding:12px;color:#1a1a18;">Bekbek Reyes</td>
+                <td style="padding:12px;color:#1a1a18;">Room #02</td>
+                <td style="padding:12px;color:#1a1a18;">₱200</td>
+                <td style="padding:12px;color:#1a1a18;">Apr 8, 2026</td>
+                <td style="padding:12px;color:#1a1a18;">GCash</td>
+                <td style="padding:12px;"><span style="display:inline-block;padding:3px 10px;background:#e8f5ee;color:#2d6a4f;border-radius:4px;font-size:11px;font-weight:600;">Paid</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <td style="padding:12px;color:#1a1a18;">Jesus Dela Cruz</td>
+                <td style="padding:12px;color:#1a1a18;">Room #04</td>
+                <td style="padding:12px;color:#1a1a18;">₱200</td>
+                <td style="padding:12px;color:#1a1a18;">Apr 10, 2026</td>
+                <td style="padding:12px;color:#1a1a18;">—</td>
+                <td style="padding:12px;"><span style="display:inline-block;padding:3px 10px;background:#fee2e2;color:#b91c1c;border-radius:4px;font-size:11px;font-weight:600;">Overdue</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <td style="padding:12px;color:#1a1a18;">Angela Santos</td>
+                <td style="padding:12px;color:#1a1a18;">Room #09</td>
+                <td style="padding:12px;color:#1a1a18;">₱200</td>
+                <td style="padding:12px;color:#1a1a18;">Apr 9, 2026</td>
+                <td style="padding:12px;color:#1a1a18;">Cash</td>
+                <td style="padding:12px;"><span style="display:inline-block;padding:3px 10px;background:#fef3e2;color:#b45309;border-radius:4px;font-size:11px;font-weight:600;">Pending</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- RESIDENTS SECTION -->
+      <div id="residents-content" class="page-section hidden">
+        <div style="padding:20px;background:#fff;border-radius:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+            <h2 style="margin:0;">Residents</h2>
+            <button style="padding:8px 16px;background:rgb(70,0,0);color:white;border:none;border-radius:6px;cursor:pointer;font-weight:600;">+ Add Resident</button>
+          </div>
+          <h3 style="margin:0 0 16px 0;font-size:16px;">Current Residents</h3>
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Name</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Room</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Check-in</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Contact</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Status</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <td style="padding:12px;color:#1a1a18;">Joren Andee Sanchez</td>
+                <td style="padding:12px;color:#1a1a18;">Room #07</td>
+                <td style="padding:12px;color:#1a1a18;">Apr 5, 2026</td>
+                <td style="padding:12px;color:#1a1a18;">09171234567</td>
+                <td style="padding:12px;"><span style="display:inline-block;padding:3px 10px;background:#e8f5ee;color:#2d6a4f;border-radius:4px;font-size:11px;font-weight:600;">Active</span></td>
+                <td style="padding:12px;"><button style="padding:5px 12px;background:#f5f4f0;border:none;border-radius:4px;cursor:pointer;margin-right:6px;font-size:12px;">View</button><button style="padding:5px 12px;background:#fee2e2;color:#b91c1c;border:none;border-radius:4px;cursor:pointer;font-size:12px;">Remove</button></td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <td style="padding:12px;color:#1a1a18;">Bekbek Reyes</td>
+                <td style="padding:12px;color:#1a1a18;">Room #02</td>
+                <td style="padding:12px;color:#1a1a18;">Apr 8, 2026</td>
+                <td style="padding:12px;color:#1a1a18;">09189876543</td>
+                <td style="padding:12px;"><span style="display:inline-block;padding:3px 10px;background:#e8f5ee;color:#2d6a4f;border-radius:4px;font-size:11px;font-weight:600;">Active</span></td>
+                <td style="padding:12px;"><button style="padding:5px 12px;background:#f5f4f0;border:none;border-radius:4px;cursor:pointer;margin-right:6px;font-size:12px;">View</button><button style="padding:5px 12px;background:#fee2e2;color:#b91c1c;border:none;border-radius:4px;cursor:pointer;font-size:12px;">Remove</button></td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <td style="padding:12px;color:#1a1a18;">Angela Santos</td>
+                <td style="padding:12px;color:#1a1a18;">Room #09</td>
+                <td style="padding:12px;color:#1a1a18;">Apr 9, 2026</td>
+                <td style="padding:12px;color:#1a1a18;">09201112222</td>
+                <td style="padding:12px;"><span style="display:inline-block;padding:3px 10px;background:#e8f5ee;color:#2d6a4f;border-radius:4px;font-size:11px;font-weight:600;">Active</span></td>
+                <td style="padding:12px;"><button style="padding:5px 12px;background:#f5f4f0;border:none;border-radius:4px;cursor:pointer;margin-right:6px;font-size:12px;">View</button><button style="padding:5px 12px;background:#fee2e2;color:#b91c1c;border:none;border-radius:4px;cursor:pointer;font-size:12px;">Remove</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- LESSONS HISTORY SECTION -->
+      <div id="history-content" class="page-section hidden">
+        <div style="padding:20px;background:#fff;border-radius:12px;">
+          <h2 style="margin:0 0 20px 0;">Lessons History</h2>
+          <div id="history-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;"></div>
+        </div>
+      </div>
+
+      <!-- SETTINGS SECTION -->
+      <div id="settings-content" class="page-section hidden">
+        <div style="padding:20px;background:#fff;border-radius:12px;max-width:600px;">
+          <h2 style="margin:0 0 24px 0;">Settings</h2>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;border:1px solid rgba(0,0,0,0.07);border-radius:8px;">
+              <div><div style="font-weight:600;color:#1a1a18;">Email Notifications</div><div style="font-size:13px;color:#9a9a96;margin-top:4px;">Receive alerts via email</div></div>
+              <button class="toggle-switch on" onclick="this.classList.toggle('on')" style="width:50px;height:28px;background:rgb(70,0,0);border:none;border-radius:14px;cursor:pointer;position:relative;transition:background 0.2s;" data-toggle></button>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;border:1px solid rgba(0,0,0,0.07);border-radius:8px;">
+              <div><div style="font-weight:600;color:#1a1a18;">SMS Alerts</div><div style="font-size:13px;color:#9a9a96;margin-top:4px;">Send SMS for check-in/out events</div></div>
+              <button class="toggle-switch" onclick="this.classList.toggle('on')" style="width:50px;height:28px;background:#ccc;border:none;border-radius:14px;cursor:pointer;position:relative;transition:background 0.2s;" data-toggle></button>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;border:1px solid rgba(0,0,0,0.07);border-radius:8px;">
+              <div><div style="font-weight:600;color:#1a1a18;">Auto Check-out Reminders</div><div style="font-size:13px;color:#9a9a96;margin-top:4px;">Notify guests 1 day before check-out</div></div>
+              <button class="toggle-switch on" onclick="this.classList.toggle('on')" style="width:50px;height:28px;background:rgb(70,0,0);border:none;border-radius:14px;cursor:pointer;position:relative;transition:background 0.2s;" data-toggle></button>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;border:1px solid rgba(0,0,0,0.07);border-radius:8px;">
+              <div><div style="font-weight:600;color:#1a1a18;">Dark Mode</div><div style="font-size:13px;color:#9a9a96;margin-top:4px;">Switch to dark interface</div></div>
+              <button class="toggle-switch" onclick="this.classList.toggle('on')" style="width:50px;height:28px;background:#ccc;border:none;border-radius:14px;cursor:pointer;position:relative;transition:background 0.2s;" data-toggle></button>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;border:1px solid rgba(0,0,0,0.07);border-radius:8px;">
+              <div><div style="font-weight:600;color:#1a1a18;">Maintenance Mode</div><div style="font-size:13px;color:#9a9a96;margin-top:4px;">Disable bookings during maintenance</div></div>
+              <button class="toggle-switch" onclick="this.classList.toggle('on')" style="width:50px;height:28px;background:#ccc;border:none;border-radius:14px;cursor:pointer;position:relative;transition:background 0.2s;" data-toggle></button>
+            </div>
+          </div>
+        </div>
+      </div>
 </main>
 
 <!-- ROOM MODAL -->
@@ -417,16 +589,62 @@ window.addEventListener('load', () => {
     // CSS handles this via ::after transition
   });
   
-  // ── RENDER LESSONS ──
+  // ── RENDER LESSONS & HISTORY ──
   renderLessons();
+  renderHistory();
 });
 
-// ── LESSONS ──
-const lessonsData = [
-  { id: 1, title: 'Lesson 1: Database Design, ER-Diagram And UML', type: 'Module', dueDate: 'Apr 20, 2026', description: 'Learn the fundamentals of database design and entity-relationship diagrams.' },
-  { id: 2, title: 'Lesson 2: Constraints, Views and SQL', type: 'Module', dueDate: 'Apr 25, 2026', description: 'Master SQL queries, constraints, and database views.' },
-  { id: 3, title: 'Activity: Online Learning Platform Database', type: 'Activity', dueDate: 'May 5, 2026', description: 'Apply your knowledge by designing a database for an online learning platform.' }
-];
+// ── HISTORY CONTENT RENDER ──
+function renderHistory() {
+  const historyGrid = document.getElementById('history-grid');
+  if (!historyGrid) return;
+  
+  const historyData = [
+    { id: 1, title: 'Lesson 1: Database Design, ER-Diagram And UML', type: 'Module', date: 'Apr 20, 2026', description: 'Learn the fundamentals of database design and entity-relationship diagrams.', status: 'Completed' },
+    { id: 2, title: 'Lesson 2: Constraints, Views and SQL', type: 'Module', date: 'Apr 25, 2026', description: 'Master SQL queries, constraints, and database views.', status: 'Completed' },
+    { id: 3, title: 'Activity: Online Learning Platform Database', type: 'Activity', date: 'May 5, 2026', description: 'Apply your knowledge by designing a database for an online learning platform.', status: 'In Progress' }
+  ];
+  
+  historyGrid.innerHTML = '';
+  historyData.forEach(item => {
+    const card = document.createElement('div');
+    card.style = `
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.07);
+      padding: 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    `;
+    
+    const typeBadge = item.type === 'Activity' 
+      ? '<span style="display:inline-block;padding:3px 10px;background:#fee2e2;color:#b91c1c;border-radius:4px;font-size:11px;font-weight:600;">ACTIVITY (Scorable)</span>'
+      : '<span style="display:inline-block;padding:3px 10px;background:#dbeafe;color:#1d4ed8;border-radius:4px;font-size:11px;font-weight:600;">MODULE</span>';
+    
+    const statusBadge = item.status === 'Completed' 
+      ? '<span style="display:inline-block;padding:3px 10px;background:#e8f5ee;color:#2d6a4f;border-radius:4px;font-size:11px;font-weight:600;">COMPLETED</span>'
+      : '<span style="display:inline-block;padding:3px 10px;background:#fff7ed;color:#b45309;border-radius:4px;font-size:11px;font-weight:600;">IN PROGRESS</span>';
+    
+    card.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
+        <div style="flex:1;">
+          <h3 style="margin:0;font-size:1rem;color:#1a1a18;font-weight:700;line-height:1.3;">${item.title}</h3>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        ${typeBadge}
+        ${statusBadge}
+        <span style="font-size:13px;color:#9a9a96;">📅 ${item.date}</span>
+      </div>
+      <p style="margin:0;font-size:13px;color:#5a5a56;line-height:1.4;">${item.description}</p>
+    `;
+    
+    historyGrid.appendChild(card);
+  });
+}
 
 function renderLessons() {
   const grid = document.getElementById('lessons-grid');
