@@ -6,554 +6,9 @@
 <title>User Dashboard</title>
 <link rel="shortcut icon" href="../img/basc-logo.png" type="image/x-icon">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="../css/StaffDashboard.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Istok+Web:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-
-:root{
-  --maroon:        rgb(70,0,0);
-  --maroon-light:  rgba(70,0,0,0.07);
-  --maroon-border: rgba(70,0,0,0.18);
-  --bg:            #f5f4f0;
-  --surface:       #ffffff;
-  --border:        rgba(0,0,0,0.07);
-  --ink:           #1a1a18;
-  --ink-2:         #5a5a56;
-  --ink-3:         #9a9a96;
-  --green:         #2d6a4f;
-  --green-bg:      #e8f5ee;
-  --amber:         #b45309;
-  --amber-bg:      #fef3e2;
-  --blue:          #1d4ed8;
-  --blue-bg:       #dbeafe;
-  --red:           #b91c1c;
-  --red-bg:        #fee2e2;
-  --sidebar-w:     230px;
-  --mid-w:         220px;
-  --topbar-h:      62px;
-  --f-head:        'Inter', sans-serif;
-  --f-body:        'Istok Web', sans-serif;
-}
-
-body{
-  font-family:var(--f-body);
-  background:var(--bg);
-  color:var(--ink);
-  display:flex;
-  height:100vh;
-  overflow:hidden;
-}
-
-/* ── TYPOGRAPHY ROLES ── */
-h1,h2,h3,h4,h5,h6,
-.topbar-title,.brand-name,.stat-val,.panel-title,
-.work-num,.nav-section-label,.stat-label,.welcome-text{
-  font-family:var(--f-head);
-}
-
-aside{display:none;}
-
-/* ═══════════════════════════════════════
-   MIDDLE PANEL  (section)
-═══════════════════════════════════════ */
-section{
-  width:var(--mid-w);
-  background:var(--surface);
-  border-right:1px solid var(--border);
-  display:flex;flex-direction:column;
-  flex-shrink:0;height:100vh;overflow-y:auto;
-}
-
-.insti-logo{
-  display:flex;align-items:center;gap:10px;
-  padding:18px 16px 16px;
-  border-bottom:1px solid var(--border);
-}
-.insti-logo img{width:38px;height:38px;object-fit:contain;}
-.brand-name{font-size:14px;font-weight:700;color:var(--ink);line-height:1.35;}
-
-.welcome{padding:18px 14px 10px;border-bottom:1px solid var(--border);}
-.welcome-content h1{
-  font-family:var(--f-head);font-size:18px;font-weight:700;color:var(--ink);line-height:1.2;
-}
-.welcome-content h2{
-  font-family:var(--f-head);font-size:13px;font-weight:500;color:var(--ink-3);margin-bottom:14px;
-}
-
-.action{
-  font-family:var(--f-head);
-  font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  color:var(--ink-3);padding:10px 0 5px;
-}
-.action h3{font:inherit;color:inherit;}
-
-.action-buttons{display:flex;flex-direction:column;gap:2px;}
-
-.action-btn{
-  font-family:var(--f-body);
-  display:flex;align-items:center;gap:10px;
-  padding:10px 12px;font-size:15px;font-weight:400;
-  color:var(--ink-2);background:none;border:none;cursor:pointer;
-  border-radius:8px;transition:background 0.15s,color 0.15s;text-align:left;
-  margin:1px 4px;
-}
-.action-btn h3{font-family:var(--f-body);font-size:15px;font-weight:400;color:inherit;}
-.action-btn:hover{background:var(--maroon-light);color:var(--maroon);}
-.action-btn.active{background:var(--maroon-light);color:var(--maroon);font-weight:700;}
-.action-btn.active h3{font-weight:700;}
-
-/* svg icons placeholders */
-.svg-icons,.svg-icons2,.svg-icons3,.svg-icons4,.svg-icons5{
-  width:16px;height:16px;flex-shrink:0;display:inline-block;
-  background-color:currentColor;
-  mask-repeat:no-repeat;mask-size:contain;mask-position:center;
-  -webkit-mask-repeat:no-repeat;-webkit-mask-size:contain;-webkit-mask-position:center;
-}
-.svg-icons        { -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Crect x='3' y='3' width='7' height='7'/%3E%3Crect x='14' y='3' width='7' height='7'/%3E%3Crect x='14' y='14' width='7' height='7'/%3E%3Crect x='3' y='14' width='7' height='7'/%3E%3C/svg%3E"); mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Crect x='3' y='3' width='7' height='7'/%3E%3Crect x='14' y='3' width='7' height='7'/%3E%3Crect x='14' y='14' width='7' height='7'/%3E%3Crect x='3' y='14' width='7' height='7'/%3E%3C/svg%3E"); }
-.svg-icons2       { -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E"); mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E"); }
-.svg-icons3       { -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z'/%3E%3C/svg%3E"); mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z'/%3E%3C/svg%3E"); }
-.svg-icons4       { -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z'/%3E%3Cline x1='7' y1='7' x2='7.01' y2='7'/%3E%3C/svg%3E"); mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z'/%3E%3Cline x1='7' y1='7' x2='7.01' y2='7'/%3E%3C/svg%3E"); }
-.svg-icons5       { -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z'/%3E%3Cpath d='M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z'/%3E%3C/svg%3E"); mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z'/%3E%3Cpath d='M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z'/%3E%3C/svg%3E"); }
-
-/* NOTIFICATION PANEL */
-.notif-panel{
-  padding:16px 14px;
-  flex:1;display:flex;flex-direction:column;gap:10px;
-  border-top:1px solid var(--border);
-  margin-top:auto;
-}
-.notif-panel > h3{
-  font-family:var(--f-head);font-size:11px;font-weight:700;
-  letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-3);
-  margin-bottom:4px;
-}
-
-.notification-panel-content{
-  background:var(--bg);border:1px solid var(--border);
-  border-radius:10px;padding:10px 12px;
-}
-.notification-panel-content .top{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:4px;
-}
-.notification-panel-content .top span{
-  font-family:var(--f-body);font-size:11px;color:var(--ink-3);
-}
-.setbtn{
-  background:none;border:none;cursor:pointer;
-  font-size:16px;color:var(--ink-3);line-height:1;
-}
-.notification-panel-content h5{
-  font-family:var(--f-head);font-size:12px;font-weight:600;
-  color:var(--ink);margin-bottom:2px;
-}
-.notification-panel-content p{
-  font-family:var(--f-body);font-size:12px;color:var(--ink-2);
-}
-
-/* ═══════════════════════════════════════
-   RIGHT PANEL  (article)
-═══════════════════════════════════════ */
-article{
-  flex:1;display:flex;flex-direction:column;
-  overflow:hidden;min-width:0;
-}
-
-/* TOP HEADER */
-.top-header{
-  height:var(--topbar-h);
-  background:var(--surface);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;padding:0 28px;flex-shrink:0;
-}
-.top-header .left{display:flex;align-items:center;gap:14px;}
-.menu-icon{
-  width:36px;height:36px;border-radius:8px;border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  font-size:17px;cursor:pointer;color:var(--ink-2);
-  transition:background 0.15s;
-}
-.menu-icon:hover{background:var(--bg);}
-.top-header h2{
-  font-family:var(--f-head);font-size:17px;font-weight:700;color:var(--ink);
-}
-
-/* STAT CARDS */
-.cards{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
-  padding:20px 26px 0;flex-shrink:0;
-}
-
-.card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:14px;padding:20px 22px 16px;
-}
-.card h2{
-  font-family:var(--f-head);font-size:12px;font-weight:600;
-  color:var(--ink-3);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;
-}
-.card h3{
-  font-family:var(--f-head);font-size:36px;font-weight:700;
-  color:var(--ink);line-height:1;margin-bottom:14px;
-}
-
-.progress{height:4px;border-radius:2px;background:var(--bg);overflow:hidden;position:relative;}
-.progress::after{content:'';position:absolute;left:0;top:0;height:100%;width:0;border-radius:2px;transition:width 1s ease;}
-.progress.green::after{background:var(--green);width:50%;}
-.progress.red::after{background:var(--red);width:15%;}
-.progress.blue::after{background:var(--blue);width:100%;}
-
-/* ARTICLE BODY */
-.article-body{
-  flex:1;overflow-y:auto;
-  padding:20px 26px 26px;
-  display:flex;flex-direction:column;gap:16px;
-}
-.article-body::-webkit-scrollbar{width:4px;}
-.article-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.1);border-radius:2px;}
-
-.page-section{display:flex;flex-direction:column;gap:16px;}
-.page-section.hidden{display:none;}
-
-/* ── PANEL / CARD SHARED ── */
-.panel{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:14px;overflow:hidden;
-}
-.panel-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:15px 20px;border-bottom:1px solid var(--border);
-}
-.panel-title{font-size:15px;font-weight:700;color:var(--ink);}
-.panel-link{
-  font-family:var(--f-body);font-size:14px;color:var(--maroon);
-  cursor:pointer;text-decoration:none;transition:opacity 0.15s;
-}
-.panel-link:hover{opacity:0.65;}
-
-/* ── TABLES ── */
-.data-table{width:100%;border-collapse:collapse;}
-.data-table th{
-  font-family:var(--f-head);font-size:11px;font-weight:700;
-  letter-spacing:1px;text-transform:uppercase;color:var(--ink-3);
-  padding:12px 18px;text-align:left;
-  background:rgba(0,0,0,0.02);border-bottom:1px solid var(--border);
-}
-.data-table td{
-  font-family:var(--f-body);font-size:15px;color:var(--ink-2);
-  padding:13px 18px;border-bottom:1px solid rgba(0,0,0,0.04);
-}
-.data-table tr:last-child td{border-bottom:none;}
-.data-table tr:hover td{background:rgba(0,0,0,0.015);}
-
-/* ── BADGES ── */
-.status-badge{
-  font-family:var(--f-body);
-  display:inline-flex;align-items:center;gap:5px;
-  font-size:13px;font-weight:700;padding:4px 10px;
-  border-radius:5px;letter-spacing:0.3px;
-}
-.badge-dot{width:5px;height:5px;border-radius:50%;background:currentColor;}
-.badge-green{background:var(--green-bg);color:var(--green);}
-.badge-amber{background:var(--amber-bg);color:var(--amber);}
-.badge-blue{background:var(--blue-bg);color:var(--blue);}
-.badge-red{background:var(--red-bg);color:var(--red);}
-
-/* ── BUTTONS ── */
-.btn-modal{
-  font-family:var(--f-body);font-size:13px;font-weight:700;
-  padding:6px 14px;border-radius:6px;border:none;cursor:pointer;
-  transition:opacity 0.15s,transform 0.1s;
-}
-.btn-modal:hover{opacity:0.85;transform:translateY(-1px);}
-.btn-accept{background:var(--maroon);color:#fff;}
-.btn-decline{background:var(--red-bg);color:var(--red);}
-.btn-cancel{background:var(--bg);color:var(--ink-2);border:1px solid var(--border);}
-.btn-reserve{background:var(--blue-bg);color:var(--blue);}
-.btn-checkin{background:var(--green-bg);color:var(--green);}
-.btn-cancel-inv{background:var(--bg);color:var(--ink-2);border:1px solid var(--border);}
-
-/* ═══════════════════════════════════════
-   DASHBOARD SECTION
-═══════════════════════════════════════ */
-.dashboard-placeholder{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
-}
-
-.dashboard-bubble1,.dashboard-bubble2,.dashboard-bubble3{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:14px;padding:20px;
-  display:flex;align-items:center;justify-content:space-between;
-}
-
-.dashbubbleleft h3{
-  font-family:var(--f-head);font-size:12px;font-weight:600;
-  color:var(--ink-3);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;
-}
-
-.percentage h1{
-  font-family:var(--f-head);font-size:36px;font-weight:700;color:var(--maroon);
-}
-
-.dashboard-list-container{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-
-.table1,.table2{
-  background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;
-}
-.table1 h2,.table2 h2{
-  font-family:var(--f-head);font-size:14px;font-weight:700;color:var(--ink);
-  padding:14px 18px;border-bottom:1px solid var(--border);
-}
-
-/* ═══════════════════════════════════════
-   PROFILE SECTION
-═══════════════════════════════════════ */
-.profile-container{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:14px;padding:28px;
-  display:flex;gap:32px;
-}
-
-.profile-left{display:flex;flex-direction:column;align-items:center;gap:14px;flex-shrink:0;}
-
-.profile-pic{
-  width:110px;height:110px;border-radius:50%;overflow:hidden;
-  border:3px solid var(--maroon-border);
-}
-.profile-pic img{width:100%;height:100%;object-fit:cover;}
-
-.profileBtn{
-  font-family:var(--f-body);font-size:13px;
-  background:var(--maroon-light);color:var(--maroon);
-  border:1px solid var(--maroon-border);border-radius:8px;
-  padding:8px 16px;cursor:pointer;font-weight:700;
-  transition:background 0.15s;
-}
-.profileBtn:hover{background:var(--maroon);color:#fff;}
-
-.profile-right{flex:1;}
-
-.profile-right form{display:flex;flex-direction:column;gap:20px;}
-.form-content{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-.split{display:flex;flex-direction:column;gap:8px;}
-
-label{
-  font-family:var(--f-head);font-size:11px;font-weight:700;
-  letter-spacing:1px;text-transform:uppercase;color:var(--ink-3);
-}
-
-input[type=text],input[type=email],input[type=password],input[type=date],
-input[type=number],input[type=tel]{
-  font-family:var(--f-body);font-size:15px;color:var(--ink);
-  background:var(--bg);border:1px solid var(--border);border-radius:8px;
-  padding:10px 14px;width:100%;outline:none;
-  transition:border-color 0.15s;
-}
-input:focus{border-color:var(--maroon);}
-
-input[type=submit]{
-  font-family:var(--f-body);font-size:15px;font-weight:700;
-  background:var(--maroon);color:#fff;border:none;
-  border-radius:9px;padding:12px 28px;cursor:pointer;
-  align-self:flex-start;transition:opacity 0.15s;
-}
-input[type=submit]:hover{opacity:0.85;}
-
-/* ═══════════════════════════════════════
-   ROOMS SECTION
-═══════════════════════════════════════ */
-.article-body-content{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
-}
-
-.bubble{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:14px;overflow:hidden;cursor:pointer;
-  display:flex;flex-direction:column;
-  transition:box-shadow 0.18s,transform 0.15s;
-}
-.bubble:hover{box-shadow:0 4px 20px rgba(70,0,0,0.1);transform:translateY(-2px);}
-
-.bubble-picture{height:120px;overflow:hidden;}
-.bubble-picture img{width:100%;height:100%;object-fit:cover;}
-
-.bubble-left{padding:14px 16px;}
-.bubble-title h2{
-  font-family:var(--f-head);font-size:15px;font-weight:700;
-  color:var(--ink);margin-bottom:6px;
-}
-.status{
-  font-family:var(--f-body);font-size:13px;font-weight:700;
-  color:var(--green);background:var(--green-bg);
-  display:inline-block;padding:3px 10px;border-radius:5px;
-}
-
-.room-table-container{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:14px;overflow:hidden;
-}
-.room-table-container h2{
-  font-family:var(--f-head);font-size:15px;font-weight:700;color:var(--ink);
-  padding:15px 20px;border-bottom:1px solid var(--border);
-}
-.room-table{width:100%;border-collapse:collapse;}
-.room-table th{
-  font-family:var(--f-head);font-size:11px;font-weight:700;
-  letter-spacing:1px;text-transform:uppercase;color:var(--ink-3);
-  padding:12px 16px;text-align:left;
-  background:rgba(0,0,0,0.02);border-bottom:1px solid var(--border);
-}
-.room-table td{
-  font-family:var(--f-body);font-size:15px;color:var(--ink-2);
-  padding:13px 16px;border-bottom:1px solid rgba(0,0,0,0.04);
-}
-.room-table tr:last-child td{border-bottom:none;}
-.room-table tr:hover td{background:rgba(0,0,0,0.015);}
-.room-table td .btn-modal{margin-right:5px;}
-
-/* ═══════════════════════════════════════
-   INVENTORY SECTION
-═══════════════════════════════════════ */
-.inventory-container{display:flex;flex-direction:column;gap:16px;}
-
-.inventory-top{
-  display:flex;align-items:center;justify-content:space-between;
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:14px;padding:16px 22px;
-}
-.inventory-top h2{font-family:var(--f-head);font-size:17px;font-weight:700;color:var(--ink);}
-.addBtn{font-size:14px;padding:9px 20px;}
-
-.inventory-body{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-
-.deleteBtn{
-  font-family:var(--f-body);font-size:13px;font-weight:700;
-  background:var(--red-bg);color:var(--red);border:none;
-  border-radius:6px;padding:6px 14px;cursor:pointer;
-  transition:opacity 0.15s;
-}
-.deleteBtn:hover{opacity:0.8;}
-.editBtn{margin-right:6px;}
-
-/* INV MODAL */
-.inv-overlay{
-  display:none;position:fixed;inset:0;
-  background:rgba(0,0,0,0.45);z-index:100;
-  align-items:center;justify-content:center;
-}
-.inv-overlay.active{display:flex;}
-
-.inv-modal{
-  background:var(--surface);border-radius:16px;
-  padding:28px;width:420px;max-width:92vw;
-  box-shadow:0 20px 60px rgba(0,0,0,0.2);
-  display:flex;flex-direction:column;gap:16px;
-}
-.inv-modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
-.inv-modal-header h2{font-family:var(--f-head);font-size:17px;font-weight:700;color:var(--ink);}
-.close-x{
-  background:none;border:none;font-size:22px;cursor:pointer;
-  color:var(--ink-3);line-height:1;transition:color 0.15s;
-}
-.close-x:hover{color:var(--maroon);}
-
-.form-group{display:flex;flex-direction:column;gap:6px;}
-.form-group label{
-  font-family:var(--f-head);font-size:11px;font-weight:700;
-  letter-spacing:1px;text-transform:uppercase;color:var(--ink-3);
-}
-
-.type-toggle{display:flex;gap:16px;margin-top:4px;}
-.type-toggle input[type=radio]{accent-color:var(--maroon);}
-.type-toggle label{
-  font-family:var(--f-body);font-size:15px;font-weight:400;
-  color:var(--ink-2);letter-spacing:0;text-transform:none;cursor:pointer;
-}
-
-.inv-modal-actions{display:flex;gap:10px;margin-top:4px;}
-
-/* ═══════════════════════════════════════
-   LESSONS SECTION
-═══════════════════════════════════════ */
-.lessons-banner{
-  background:var(--maroon);border-radius:14px;
-  padding:28px 30px;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:20px;
-}
-.lessons-banner h1{
-  font-family:var(--f-head);font-size:18px;font-weight:700;
-  color:#fff;line-height:1.3;margin-bottom:6px;
-}
-.lessons-banner h2{
-  font-family:var(--f-head);font-size:14px;font-weight:500;
-  color:rgba(255,255,255,0.65);
-}
-.lessons-banner-img{
-  width:60px;height:60px;object-fit:contain;
-  border-radius:50%;border:2px solid rgba(255,255,255,0.25);
-  flex-shrink:0;
-}
-
-#lessons-list{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:14px;padding:20px 24px;
-  display:flex;flex-direction:column;gap:12px;
-}
-#lessons-list a{
-  font-family:var(--f-body);font-size:16px;color:var(--maroon);
-  text-decoration:none;font-weight:700;
-  padding:12px 16px;background:var(--maroon-light);
-  border:1px solid var(--maroon-border);border-radius:9px;
-  display:block;transition:background 0.15s,transform 0.12s;
-}
-#lessons-list a:hover{background:var(--maroon);color:#fff;transform:translateX(3px);}
-
-/* ═══════════════════════════════════════
-   ROOM MODAL
-═══════════════════════════════════════ */
-.room-overlay{
-  display:none;position:fixed;inset:0;
-  background:rgba(0,0,0,0.45);z-index:100;
-  align-items:center;justify-content:center;
-}
-.room-overlay.active{display:flex;}
-
-.room-modal{
-  background:var(--surface);border-radius:16px;
-  width:540px;max-width:94vw;
-  box-shadow:0 20px 60px rgba(0,0,0,0.2);
-  overflow:hidden;
-}
-
-.modal-room-img{width:100%;height:180px;object-fit:cover;display:block;}
-
-.modal-body{padding:24px 28px;}
-
-.modal-header{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:20px;
-}
-.modal-header h2{font-family:var(--f-head);font-size:20px;font-weight:700;color:var(--ink);}
-.modal-price{
-  font-family:var(--f-head);font-size:18px;font-weight:700;
-  color:var(--maroon);
-}
-
-.form-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:14px;
-  margin-bottom:20px;
-}
-.form-grid .full-width{grid-column:1/-1;}
-
-.modal-actions{display:flex;gap:10px;}
-.btn-reserve,.btn-checkin{font-size:14px;padding:10px 20px;}
-.btn-cancel{font-size:14px;padding:10px 20px;}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(10px);}
-  to{opacity:1;transform:translateY(0);}
-}
-.page-section{animation:fadeUp 0.3s ease both;}
 </style>
 </head>
 
@@ -591,6 +46,18 @@ input[type=submit]:hover{opacity:0.85;}
         <button id="lessons-btn" class="action-btn" data-page="lessons">
           <i class="svg-icons5"></i><h3>Lessons</h3>
         </button>
+        <button id="payments-btn" class="action-btn" data-page="payments">
+          <i class="svg-icons6"></i><h3>Payments</h3>
+        </button>
+        <button id="residents-btn" class="action-btn" data-page="residents">
+          <i class="svg-icons7"></i><h3>Residents</h3>
+        </button>
+        <button id="history-btn" class="action-btn" data-page="history">
+          <i class="svg-icons8"></i><h3>Lessons History</h3>
+        </button>
+        <button id="settings-btn" class="action-btn" data-page="settings">
+          <i class="svg-icons9"></i><h3>Settings</h3>
+        </button>
       </div>
     </div>
 
@@ -625,6 +92,9 @@ input[type=submit]:hover{opacity:0.85;}
       <div class="left">
         <div class="menu-icon">☰</div>
         <h2 id="page-title">Dashboard</h2>
+      </div>
+      <div class="right" style="display:flex;align-items:center;gap:12px;margin-left:auto;">
+        <div class="icon-btn" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(70,0,0,0.1);border-radius:50%;cursor:pointer;"><svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:rgb(70,0,0);stroke-width:2;fill:none;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
       </div>
     </div>
 
@@ -825,8 +295,8 @@ input[type=submit]:hover{opacity:0.85;}
         </div>
 
         <!-- Inventory Modal -->
-        <div class="inv-overlay" id="inv-overlay">
-          <div class="inv-modal">
+        <div class="inv-overlay" id="inv-overlay" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:9999;">
+          <div class="inv-modal" style="position:relative;z-index:10000;">
             <div class="inv-modal-header">
               <h2>Add Inventory Item</h2>
               <button class="close-x" id="close-inv-modal">&times;</button>
@@ -869,15 +339,170 @@ input[type=submit]:hover{opacity:0.85;}
           </div>
           <img src="../img/IM-logo.png" alt="Banner" class="lessons-banner-img">
         </div>
-        <div id="lessons-list">
-          <a href="lesson.html">Lesson 1: Database Design, ER-Diagram And UML</a>
-          <a href="lesson.html">Lesson 2: Constraints, Views and SQL</a>
-          <a href="lesson.html">Activity: Online Learning Platform Database</a>
+        <div class="lessons-container">
+          <div id="lessons-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px;"></div>
         </div>
       </div>
 
-    </div><!-- /article-body -->
-  </article>
+      <!-- PAYMENTS SECTION -->
+      <div id="payments-content" class="page-section hidden">
+        <div style="padding:20px;background:#fff;border-radius:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+            <h2 style="margin:0;">Payments</h2>
+            <button style="padding:8px 16px;background:rgb(70,0,0);color:white;border:none;border-radius:6px;cursor:pointer;font-weight:600;">+ Record Payment</button>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:24px;">
+            <div style="padding:18px;background:#f5f4f0;border-radius:10px;">
+              <div style="font-size:13px;color:#5a5a56;margin-bottom:8px;">Total Collected</div>
+              <div style="font-size:28px;font-weight:700;color:#1a1a18;">₱48,200</div>
+              <div style="font-size:12px;color:#9a9a96;margin-top:4px;">April 2026</div>
+            </div>
+            <div style="padding:18px;background:#f5f4f0;border-radius:10px;">
+              <div style="font-size:13px;color:#5a5a56;margin-bottom:8px;">Pending</div>
+              <div style="font-size:28px;font-weight:700;color:#1a1a18;">₱2,400</div>
+              <div style="font-size:12px;color:#9a9a96;margin-top:4px;">3 unpaid</div>
+            </div>
+            <div style="padding:18px;background:#f5f4f0;border-radius:10px;">
+              <div style="font-size:13px;color:#5a5a56;margin-bottom:8px;">Overdue</div>
+              <div style="font-size:28px;font-weight:700;color:#1a1a18;">₱800</div>
+              <div style="font-size:12px;color:#9a9a96;margin-top:4px;">2 overdue</div>
+            </div>
+          </div>
+          <h3 style="margin:24px 0 16px 0;font-size:16px;">Payment Records</h3>
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Resident</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Room</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Amount</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Date</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Method</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <td style="padding:12px;color:#1a1a18;">Joren Marquez</td>
+                <td style="padding:12px;color:#1a1a18;">Room #07</td>
+                <td style="padding:12px;color:#1a1a18;">₱200</td>
+                <td style="padding:12px;color:#1a1a18;">Apr 5, 2026</td>
+                <td style="padding:12px;color:#1a1a18;">Cash</td>
+                <td style="padding:12px;"><span style="display:inline-block;padding:3px 10px;background:#e8f5ee;color:#2d6a4f;border-radius:4px;font-size:11px;font-weight:600;">Paid</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <td style="padding:12px;color:#1a1a18;">Bekbek Reyes</td>
+                <td style="padding:12px;color:#1a1a18;">Room #02</td>
+                <td style="padding:12px;color:#1a1a18;">₱200</td>
+                <td style="padding:12px;color:#1a1a18;">Apr 8, 2026</td>
+                <td style="padding:12px;color:#1a1a18;">GCash</td>
+                <td style="padding:12px;"><span style="display:inline-block;padding:3px 10px;background:#e8f5ee;color:#2d6a4f;border-radius:4px;font-size:11px;font-weight:600;">Paid</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <td style="padding:12px;color:#1a1a18;">Jesus Dela Cruz</td>
+                <td style="padding:12px;color:#1a1a18;">Room #04</td>
+                <td style="padding:12px;color:#1a1a18;">₱200</td>
+                <td style="padding:12px;color:#1a1a18;">Apr 10, 2026</td>
+                <td style="padding:12px;color:#1a1a18;">—</td>
+                <td style="padding:12px;"><span style="display:inline-block;padding:3px 10px;background:#fee2e2;color:#b91c1c;border-radius:4px;font-size:11px;font-weight:600;">Overdue</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <td style="padding:12px;color:#1a1a18;">Angela Santos</td>
+                <td style="padding:12px;color:#1a1a18;">Room #09</td>
+                <td style="padding:12px;color:#1a1a18;">₱200</td>
+                <td style="padding:12px;color:#1a1a18;">Apr 9, 2026</td>
+                <td style="padding:12px;color:#1a1a18;">Cash</td>
+                <td style="padding:12px;"><span style="display:inline-block;padding:3px 10px;background:#fef3e2;color:#b45309;border-radius:4px;font-size:11px;font-weight:600;">Pending</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- RESIDENTS SECTION -->
+      <div id="residents-content" class="page-section hidden">
+        <div style="padding:20px;background:#fff;border-radius:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+            <h2 style="margin:0;">Residents</h2>
+            <button style="padding:8px 16px;background:rgb(70,0,0);color:white;border:none;border-radius:6px;cursor:pointer;font-weight:600;">+ Add Resident</button>
+          </div>
+          <h3 style="margin:0 0 16px 0;font-size:16px;">Current Residents</h3>
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Name</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Room</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Check-in</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Contact</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Status</th>
+                <th style="text-align:left;padding:12px;font-weight:600;color:#5a5a56;font-size:13px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <td style="padding:12px;color:#1a1a18;">Joren Andee Sanchez</td>
+                <td style="padding:12px;color:#1a1a18;">Room #07</td>
+                <td style="padding:12px;color:#1a1a18;">Apr 5, 2026</td>
+                <td style="padding:12px;color:#1a1a18;">09171234567</td>
+                <td style="padding:12px;"><span style="display:inline-block;padding:3px 10px;background:#e8f5ee;color:#2d6a4f;border-radius:4px;font-size:11px;font-weight:600;">Active</span></td>
+                <td style="padding:12px;"><button style="padding:5px 12px;background:#f5f4f0;border:none;border-radius:4px;cursor:pointer;margin-right:6px;font-size:12px;">View</button><button style="padding:5px 12px;background:#fee2e2;color:#b91c1c;border:none;border-radius:4px;cursor:pointer;font-size:12px;">Remove</button></td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <td style="padding:12px;color:#1a1a18;">Bekbek Reyes</td>
+                <td style="padding:12px;color:#1a1a18;">Room #02</td>
+                <td style="padding:12px;color:#1a1a18;">Apr 8, 2026</td>
+                <td style="padding:12px;color:#1a1a18;">09189876543</td>
+                <td style="padding:12px;"><span style="display:inline-block;padding:3px 10px;background:#e8f5ee;color:#2d6a4f;border-radius:4px;font-size:11px;font-weight:600;">Active</span></td>
+                <td style="padding:12px;"><button style="padding:5px 12px;background:#f5f4f0;border:none;border-radius:4px;cursor:pointer;margin-right:6px;font-size:12px;">View</button><button style="padding:5px 12px;background:#fee2e2;color:#b91c1c;border:none;border-radius:4px;cursor:pointer;font-size:12px;">Remove</button></td>
+              </tr>
+              <tr style="border-bottom:1px solid rgba(0,0,0,0.07);">
+                <td style="padding:12px;color:#1a1a18;">Angela Santos</td>
+                <td style="padding:12px;color:#1a1a18;">Room #09</td>
+                <td style="padding:12px;color:#1a1a18;">Apr 9, 2026</td>
+                <td style="padding:12px;color:#1a1a18;">09201112222</td>
+                <td style="padding:12px;"><span style="display:inline-block;padding:3px 10px;background:#e8f5ee;color:#2d6a4f;border-radius:4px;font-size:11px;font-weight:600;">Active</span></td>
+                <td style="padding:12px;"><button style="padding:5px 12px;background:#f5f4f0;border:none;border-radius:4px;cursor:pointer;margin-right:6px;font-size:12px;">View</button><button style="padding:5px 12px;background:#fee2e2;color:#b91c1c;border:none;border-radius:4px;cursor:pointer;font-size:12px;">Remove</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- LESSONS HISTORY SECTION -->
+      <div id="history-content" class="page-section hidden">
+        <div style="padding:20px;background:#fff;border-radius:12px;">
+          <h2 style="margin:0 0 20px 0;">Lessons History</h2>
+          <div id="history-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;"></div>
+        </div>
+      </div>
+
+      <!-- SETTINGS SECTION -->
+      <div id="settings-content" class="page-section hidden">
+        <div style="padding:20px;background:#fff;border-radius:12px;max-width:600px;">
+          <h2 style="margin:0 0 24px 0;">Settings</h2>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;border:1px solid rgba(0,0,0,0.07);border-radius:8px;">
+              <div><div style="font-weight:600;color:#1a1a18;">Email Notifications</div><div style="font-size:13px;color:#9a9a96;margin-top:4px;">Receive alerts via email</div></div>
+              <button class="toggle-switch on" onclick="this.classList.toggle('on')" style="width:50px;height:28px;background:rgb(70,0,0);border:none;border-radius:14px;cursor:pointer;position:relative;transition:background 0.2s;" data-toggle></button>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;border:1px solid rgba(0,0,0,0.07);border-radius:8px;">
+              <div><div style="font-weight:600;color:#1a1a18;">SMS Alerts</div><div style="font-size:13px;color:#9a9a96;margin-top:4px;">Send SMS for check-in/out events</div></div>
+              <button class="toggle-switch" onclick="this.classList.toggle('on')" style="width:50px;height:28px;background:#ccc;border:none;border-radius:14px;cursor:pointer;position:relative;transition:background 0.2s;" data-toggle></button>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;border:1px solid rgba(0,0,0,0.07);border-radius:8px;">
+              <div><div style="font-weight:600;color:#1a1a18;">Auto Check-out Reminders</div><div style="font-size:13px;color:#9a9a96;margin-top:4px;">Notify guests 1 day before check-out</div></div>
+              <button class="toggle-switch on" onclick="this.classList.toggle('on')" style="width:50px;height:28px;background:rgb(70,0,0);border:none;border-radius:14px;cursor:pointer;position:relative;transition:background 0.2s;" data-toggle></button>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;border:1px solid rgba(0,0,0,0.07);border-radius:8px;">
+              <div><div style="font-weight:600;color:#1a1a18;">Dark Mode</div><div style="font-size:13px;color:#9a9a96;margin-top:4px;">Switch to dark interface</div></div>
+              <button class="toggle-switch" onclick="this.classList.toggle('on')" style="width:50px;height:28px;background:#ccc;border:none;border-radius:14px;cursor:pointer;position:relative;transition:background 0.2s;" data-toggle></button>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px;border:1px solid rgba(0,0,0,0.07);border-radius:8px;">
+              <div><div style="font-weight:600;color:#1a1a18;">Maintenance Mode</div><div style="font-size:13px;color:#9a9a96;margin-top:4px;">Disable bookings during maintenance</div></div>
+              <button class="toggle-switch" onclick="this.classList.toggle('on')" style="width:50px;height:28px;background:#ccc;border:none;border-radius:14px;cursor:pointer;position:relative;transition:background 0.2s;" data-toggle></button>
+            </div>
+          </div>
+        </div>
+      </div>
 </main>
 
 <!-- ROOM MODAL -->
@@ -963,7 +588,109 @@ window.addEventListener('load', () => {
   document.querySelectorAll('.progress::after').forEach(el => {
     // CSS handles this via ::after transition
   });
+  
+  // ── RENDER LESSONS & HISTORY ──
+  renderLessons();
+  renderHistory();
 });
+
+// ── HISTORY CONTENT RENDER ──
+function renderHistory() {
+  const historyGrid = document.getElementById('history-grid');
+  if (!historyGrid) return;
+  
+  const historyData = [
+    { id: 1, title: 'Lesson 1: Database Design, ER-Diagram And UML', type: 'Module', date: 'Apr 20, 2026', description: 'Learn the fundamentals of database design and entity-relationship diagrams.', status: 'Completed' },
+    { id: 2, title: 'Lesson 2: Constraints, Views and SQL', type: 'Module', date: 'Apr 25, 2026', description: 'Master SQL queries, constraints, and database views.', status: 'Completed' },
+    { id: 3, title: 'Activity: Online Learning Platform Database', type: 'Activity', date: 'May 5, 2026', description: 'Apply your knowledge by designing a database for an online learning platform.', status: 'In Progress' }
+  ];
+  
+  historyGrid.innerHTML = '';
+  historyData.forEach(item => {
+    const card = document.createElement('div');
+    card.style = `
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.07);
+      padding: 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    `;
+    
+    const typeBadge = item.type === 'Activity' 
+      ? '<span style="display:inline-block;padding:3px 10px;background:#fee2e2;color:#b91c1c;border-radius:4px;font-size:11px;font-weight:600;">ACTIVITY (Scorable)</span>'
+      : '<span style="display:inline-block;padding:3px 10px;background:#dbeafe;color:#1d4ed8;border-radius:4px;font-size:11px;font-weight:600;">MODULE</span>';
+    
+    const statusBadge = item.status === 'Completed' 
+      ? '<span style="display:inline-block;padding:3px 10px;background:#e8f5ee;color:#2d6a4f;border-radius:4px;font-size:11px;font-weight:600;">COMPLETED</span>'
+      : '<span style="display:inline-block;padding:3px 10px;background:#fff7ed;color:#b45309;border-radius:4px;font-size:11px;font-weight:600;">IN PROGRESS</span>';
+    
+    card.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
+        <div style="flex:1;">
+          <h3 style="margin:0;font-size:1rem;color:#1a1a18;font-weight:700;line-height:1.3;">${item.title}</h3>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        ${typeBadge}
+        ${statusBadge}
+        <span style="font-size:13px;color:#9a9a96;">📅 ${item.date}</span>
+      </div>
+      <p style="margin:0;font-size:13px;color:#5a5a56;line-height:1.4;">${item.description}</p>
+    `;
+    
+    historyGrid.appendChild(card);
+  });
+}
+
+function renderLessons() {
+  const grid = document.getElementById('lessons-grid');
+  if (!grid) return;
+  
+  grid.innerHTML = '';
+  lessonsData.forEach(lesson => {
+    const card = document.createElement('div');
+    card.className = 'lesson-card';
+    card.style = `
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.07);
+      padding: 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    `;
+    
+    const typeBadge = lesson.type === 'Activity' 
+      ? '<span style="display:inline-block;padding:3px 10px;background:#fee2e2;color:#b91c1c;border-radius:4px;font-size:11px;font-weight:600;">ACTIVITY (Scorable)</span>'
+      : '<span style="display:inline-block;padding:3px 10px;background:#dbeafe;color:#1d4ed8;border-radius:4px;font-size:11px;font-weight:600;">MODULE</span>';
+    
+    card.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
+        <div style="flex:1;">
+          <h3 style="margin:0;font-size:1rem;color:#1a1a18;font-weight:700;line-height:1.3;">${lesson.title}</h3>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;">
+        ${typeBadge}
+        <span style="font-size:13px;color:#9a9a96;">📅 Due: ${lesson.dueDate}</span>
+      </div>
+      <p style="margin:0;font-size:13px;color:#5a5a56;line-height:1.4;">${lesson.description}</p>
+      <div style="display:flex;gap:8px;margin-top:8px;">
+        <a href="lesson.html?title=${encodeURIComponent(lesson.title)}&type=${lesson.type}&dueDate=${lesson.dueDate}" style="flex:1;text-decoration:none;padding:8px 12px;background:rgb(70,0,0);color:white;border-radius:6px;text-align:center;font-size:13px;font-weight:600;transition:background 0.15s;border:none;cursor:pointer;" onmouseover="this.style.background='#520000'" onmouseout="this.style.background='rgb(70,0,0)'">
+          ${lesson.type === 'Activity' ? 'View & Submit' : 'View'}
+        </a>
+      </div>
+    `;
+    
+    grid.appendChild(card);
+  });
+}
 </script>
 </body>
 </html>
